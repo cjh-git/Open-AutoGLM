@@ -9,14 +9,9 @@ const router = createRouter({
       component: () => import('@/views/DashboardView.vue')
     },
     {
-      path: '/devices',
-      name: 'devices',
-      component: () => import('@/views/DevicesView.vue')
-    },
-    {
-      path: '/commands',
-      name: 'commands',
-      component: () => import('@/views/CommandsView.vue')
+      path: '/control',
+      name: 'control',
+      component: () => import('@/views/DeviceControlView.vue')
     },
     {
       path: '/config',

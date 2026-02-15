@@ -9,6 +9,7 @@ export interface Device {
   port?: number
   groupId?: string
   screenshot?: string
+  aspectRatio?: string
 }
 
 export interface DeviceGroup {

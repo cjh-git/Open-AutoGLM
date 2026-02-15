@@ -49,7 +49,6 @@ import { useRoute } from 'vue-router'
 import { 
   LayoutDashboard, 
   Smartphone, 
-  Terminal, 
   Settings, 
   FileText,
   Sun,
@@ -67,8 +66,7 @@ const isConnected = ref(false)
 
 const navItems = [
   { path: '/', label: '仪表盘', icon: LayoutDashboard },
-  { path: '/devices', label: '设备管理', icon: Smartphone },
-  { path: '/commands', label: '指令控制', icon: Terminal },
+  { path: '/control', label: '设备控制', icon: Smartphone },
   { path: '/config', label: '参数配置', icon: Settings },
   { path: '/logs', label: '日志管理', icon: FileText }
 ]

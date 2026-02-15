@@ -183,7 +183,17 @@
               <div v-if="selectedDevice.status === 'online'" class="screen-frame">
                 <div class="screen-notch"></div>
                 <div class="screen-display">
-                  <div class="screen-texture"></div>
+                  <div class="screen-device-content" :style="deviceScreenStyle">
+                    <div v-if="deviceScreenImage" class="screen-image-container">
+                      <img :src="deviceScreenImage" alt="设备屏幕" class="screen-image" />
+                    </div>
+                    <div v-else class="screen-placeholder">
+                      <div class="placeholder-icon">
+                        <Smartphone :size="48" />
+                      </div>
+                      <p>等待屏幕信号...</p>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div v-else class="screen-offline">
@@ -355,6 +365,20 @@ const showEditModal = ref(false)
 const showGroupModal = ref(false)
 const showDeleteConfirm = ref(false)
 const screenViewport = ref<HTMLElement | null>(null)
+
+const deviceScreenImage = computed(() => {
+  if (!selectedDevice.value) return ''
+  return selectedDevice.value.screenshot || ''
+})
+
+const deviceScreenStyle = computed(() => {
+  return {
+    aspectRatio: '9/16',
+    width: '100%',
+    height: '100%',
+    objectFit: 'contain' as const
+  }
+})
 
 const newDevice = ref({
   name: '',
@@ -747,6 +771,53 @@ const toggleFullscreen = () => {
   margin-top: 8px;
   overflow: hidden;
   position: relative;
+}
+
+.screen-device-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+}
+
+.screen-image-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.screen-image {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.screen-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  gap: 12px;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%);
+}
+
+.placeholder-icon {
+  opacity: 0.3;
+}
+
+.screen-placeholder p {
+  font-size: 12px;
+  opacity: 0.5;
 }
 
 .screen-texture {
