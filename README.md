@@ -1,2 +1,0 @@
-# Open-AutoGLM
-Open-AutoGLM
