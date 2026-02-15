@@ -188,10 +188,10 @@
               v-model="commandStore.currentCommand"
               class="command-textarea"
               placeholder="输入指令，每条指令以逗号分隔...&#10;&#10;示例:&#10;tap 500 500&#10;screenshot&#10;swipe 500 1000 500 300 300"
-              rows="5"
+              rows="15"
             ></textarea>
             
-            <div class="command-actions">
+            <div class="command-actions" style="margin-bottom: 8px;">
               <button 
                 class="btn btn-primary"
                 :disabled="!commandStore.currentCommand || commandStore.isExecuting"
@@ -660,7 +660,7 @@ const clearHistory = () => {
   display: grid;
   grid-template-columns: 280px 1fr 360px;
   gap: 16px;
-  height: calc(100vh - 180px);
+  height: calc(100vh - 160px);
 }
 
 .devices-section, .screen-section, .command-section {
@@ -794,12 +794,13 @@ const clearHistory = () => {
 }
 
 .screen-frame {
-  width: 160px;
-  height: 320px;
+  width: 180px;
+  height: 360px;
   background: #1a1a1a;
-  border-radius: 20px;
-  padding: 6px;
-  box-shadow: 0 0 0 2px #333;
+  border-radius: 24px;
+  padding: 8px;
+  box-shadow: var(--shadow-lg);
+  border: 2px solid #333;
 }
 
 .screen-notch {
@@ -921,15 +922,16 @@ const clearHistory = () => {
 
 .command-textarea {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   background: var(--background);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   color: var(--text-primary);
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 13px;
   resize: vertical;
-  min-height: 80px;
+  min-height: 140px;
+  line-height: 1.6;
 }
 
 .command-textarea:focus {
